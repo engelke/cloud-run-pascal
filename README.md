@@ -2,6 +2,8 @@
 
 Example web service in Pascal, deployed via Google Cloud Run
 
+[![Run on Google Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run)
+
 This code demonstrates how to create and deploy a web service written
 in Pascal, using Google Cloud Run. The Pascal program that provides
 the service is wrapped in a small Python program that receives the
