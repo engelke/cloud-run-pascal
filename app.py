@@ -24,9 +24,21 @@ pascal_executable = '/app/roman'
 
 @app.route('/')
 def convert_to_roman():
-    number = request.args.get('number').encode()
+    # Parameter must be bytes to send to spawned program
+    number = request.args.get('number', 'N/A').encode()
+
     result = subprocess.run(pascal_executable, input=number, capture_output=True)
-    return result.stdout
+
+    if result.returncode != 0:
+        # Maybe the user sent an invalid value (can't be read as an integer) or
+        # maybe the Pascal program has an error. Not going to try to tell them
+        # apart here, just say something went wrong.
+        return result.stderr, 500
+    elif result.stderr != b'':
+        # The Pascal program wrote an error message, so this is a user error
+        return result.stderr, 400
+    else:
+        return result.stdout, 200
 
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0',port=int(os.environ.get('PORT', 8080)))

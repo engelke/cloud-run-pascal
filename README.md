@@ -16,7 +16,7 @@ the given value, converted to Roman numerals.
 
 The Pascal program is very basic, and was adapted from an example in
 Kathleen Jensen's and Niklaus Wirth's _Pascal User Manual and Report_,
-published in 1974. It does not handle Roman numeral shortcuts, such
+*published in 1974*. It does not handle Roman numeral shortcuts, such
 as IV for 4, instead using the long version in those cases, like IIII.
 
 This is obviously not the way to create a Roman numeral web service

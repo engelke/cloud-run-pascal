@@ -7,6 +7,8 @@ COPY . ./
 
 # Install production dependencies.
 RUN pip install -r requirements.txt
+
+# Compile the Pascal program
 RUN apt-get update -y -q
 RUN apt-get install -y -q fpc
 RUN fpc roman.pas
