@@ -22,10 +22,9 @@ app = Flask(__name__)
 pascal_executable = '/app/roman'
 
 
-@app.route('/')
-def convert_to_roman():
-    # Parameter must be bytes to send to spawned program
-    number = request.args.get('number', 'N/A').encode()
+@app.route('/<number>')
+def convert_to_roman(number):
+    number = number.encode()    # Need byte string
 
     result = subprocess.run(pascal_executable, input=number, capture_output=True)
 

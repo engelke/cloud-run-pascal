@@ -11,7 +11,7 @@ web requests, runs the Pascal program, and then creates a web response
 containing the output of the Pascal program.
 
 The web service is invoked via an HTTPS GET request with a single
-query parameter, `number=value`, where value is an integer. It returns
+path parameter, the number to be converted. It returns
 the given value, converted to Roman numerals.
 
 The Pascal program is very basic, and was adapted from an example in
